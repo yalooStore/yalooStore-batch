@@ -1,5 +1,6 @@
 package com.yaloostore.batch.member.step;
 
+import com.yaloostore.batch.config.TestBatchConfig;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -12,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBatchTest
 @ExtendWith(SpringExtension.class)
-@SpringBootTest
+@SpringBootTest(classes = {TestBatchConfig.class})
 class ModifyInactiveMemberStepTest {
 
     @BeforeEach

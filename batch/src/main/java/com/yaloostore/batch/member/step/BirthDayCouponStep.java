@@ -1,16 +1,15 @@
-package com.yaloostore.batch.member.job.step;
+package com.yaloostore.batch.member.step;
 
 
 import com.yaloostore.batch.config.ServerConfig;
-import com.yaloostore.batch.member.dto.MemberCouponRequestDto;
 import com.yaloostore.batch.member.dto.MemberDto;
 import lombok.RequiredArgsConstructor;
-import lombok.Value;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.StepScope;
 import org.springframework.batch.core.repository.JobRepository;
 import org.springframework.batch.core.step.builder.StepBuilder;
 import org.springframework.batch.item.support.ListItemReader;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.ParameterizedTypeReference;
@@ -33,8 +32,7 @@ public class BirthDayCouponStep {
 
     private final ServerConfig serverConfig;
     private final RestTemplate restTemplate;
-    private static final int CHUNK_SIZE = 500;
-    private int currentIndex = 0;
+    private static final int CHUNK_SIZE = 100;
 
 
     /**
@@ -48,15 +46,10 @@ public class BirthDayCouponStep {
     @Bean
     @StepScope
     public ListItemReader<MemberDto> listItemReader(@Value("#{jobParameters['laterDays']}") Integer laterDays){
-        resetCurrentIndex();
-
         List<MemberDto> birthdayMemberList = getBirthdayMemberList(laterDays);
-
-        if (birthdayMemberList.isEmpty()){
+        if (birthdayMemberList.isEmpty()) {
             return null;
         }
-
-        requestBirthdayCoupon(birthdayMemberList.size());
         return new ListItemReader<>(birthdayMemberList);
 
 
@@ -79,14 +72,6 @@ public class BirthDayCouponStep {
         return Objects.requireNonNull(response.getBody().getData());
     }
 
-    private void resetCurrentIndex() {
-        this.currentIndex =0;
-    }
 
-    @Bean
-    public Step giveABirthdayCoupon(JobRepository jobRepository, PlatformTransactionManager transactionManager){
-        return new StepBuilder("jobRepository", jobRepository)
-                .<MemberDto, MemberCouponRequestDto>chunk(CHUNK_SIZE).build();
 
-    }
 }
