@@ -7,12 +7,11 @@
   
 # 구현의 흐름
 
-
-# 휴면 회원 관련 배치 서버 작업 
-## 휴먼 회원으로 변경을 위한 Step 구성 
+## [휴면 회원 관련 배치 서버 작업]
+### 1. 휴먼 회원으로 변경을 위한 Step 구성 
 ![image](https://github.com/yalooStore/yalooStore-batch/assets/81970382/dd461800-6917-4879-8f18-f20c2af5a2df)
 
-## API server
+### 2. API
 - 휴먼 회원찾기와 관련된 API 제공
   - 회원 인증을 통한 로그인 시 해당 회원의 로그인 이력 추가(auth server 내에서 해당 API를 호출해서 해당 작업 진행)
     - [POST] /api/service/members/add/loginHistory/{loginId}
