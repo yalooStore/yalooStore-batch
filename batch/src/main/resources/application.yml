@@ -14,8 +14,8 @@ server:
   port: 8084
 
 yalooStore:
-  front: localhost:8082
-  shop : localhost:8081
-  gateway: localhost:7080
-  auth: localhost:8083
+  front: http://localhost:8082
+  shop : http://localhost:8081
+  gateway: http://localhost:7080
+  auth: http://localhost:8083
 
