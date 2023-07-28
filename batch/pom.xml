@@ -86,6 +86,11 @@
             <artifactId>yalooStore-common-utils</artifactId>
             <version>v1.0.7</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.springframework.batch</groupId>
+            <artifactId>spring-batch-core</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

@@ -9,6 +9,8 @@ spring:
   batch:
     job:
       enabled: false
+  main:
+    allow-bean-definition-overriding: true
 
 server:
   port: 8084
@@ -18,4 +20,6 @@ yalooStore:
   shop : http://localhost:8081
   gateway: http://localhost:7080
   auth: http://localhost:8083
+
+
 

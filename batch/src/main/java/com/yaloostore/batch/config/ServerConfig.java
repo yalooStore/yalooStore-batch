@@ -12,12 +12,12 @@ import org.springframework.context.annotation.Configuration;
 public class ServerConfig {
 
 
-    @Value("${yalooStor.shop}")
+    @Value("${yalooStore.shop}")
     private String shopUrl;
 
-    @Value("${yalooStor.fron}")
+    @Value("${yalooStore.front}")
     private String frontUrl;
-    @Value("${yalooStor.gateway}")
+    @Value("${yalooStore.gateway}")
     private String gatewayUrl;
 
 }

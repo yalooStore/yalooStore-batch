@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBatchTest
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(classes = {TestBatchConfig.class})
-class ModifyInactiveMemberStepTest {
+class InactiveMemberStepTest {
 
     @BeforeEach
     void setUp() {

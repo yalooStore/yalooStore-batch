@@ -30,7 +30,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 @Slf4j
 @RequiredArgsConstructor
 @Configuration
-public class ModifyInactiveMemberStep {
+public class InactiveMemberStep {
 
     private final RestTemplate restTemplate;
     private final ServerConfig serverConfig;
@@ -107,7 +107,7 @@ public class ModifyInactiveMemberStep {
         HttpEntity<? extends List<? extends MemberIdResponse>> requestEntity = new HttpEntity<>(memberIdResponses, headers);
 
         String uri = UriComponentsBuilder.fromUriString(serverConfig.getShopUrl())
-                .pathSegment().toUriString();
+                .pathSegment("api", "service", "members", "modify", "inactive").toUriString();
 
         ResponseEntity<Object> exchange = restTemplate.exchange(uri,
                 HttpMethod.PUT,
@@ -115,6 +115,7 @@ public class ModifyInactiveMemberStep {
                 new ParameterizedTypeReference<>() {
                 });
     }
+
 
 
 }
