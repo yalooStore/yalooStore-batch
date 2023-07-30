@@ -15,17 +15,17 @@ import org.springframework.context.annotation.Configuration;
 @EnableAutoConfiguration
 @Configuration
 public class TestBatchConfig {
-    
-    
+
+
     /**
      * 스프링 배치 테스트 유틸인 JobLauncherTestUtils을 빈으로 등록합니다.
      * 해당 유틸을 이용한 jobParameter를 사용한 job등의 실행이 이루어집니다.
      * 해당 유틸은 각 테스트 코드에서 @Autowired를 이용한 호출,사용을 진행합니다.
-     * 
+     *
      * @return JobLauncherTestUtils
      * */
     @Bean
-    public JobLauncherTestUtils jobLauncherTestUtils(){
+    public JobLauncherTestUtils jobLauncherTestUtils() {
         return new JobLauncherTestUtils();
     }
 }

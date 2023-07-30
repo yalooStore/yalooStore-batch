@@ -1,16 +1,6 @@
 spring:
-  jpa:
-    database-platform : org.hibernate.dialect.MySQLDialect
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/bookstore?serverTimezone=UTC&characterEncoding=UTF-8
-    username : root
-    password :
-  batch:
-    job:
-      enabled: false
-  main:
-    allow-bean-definition-overriding: true
+  profiles:
+    include: prod
 
 server:
   port: 8084

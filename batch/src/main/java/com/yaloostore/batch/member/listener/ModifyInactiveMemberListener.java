@@ -1,10 +1,14 @@
 package com.yaloostore.batch.member.listener;
 
 
+import com.yaloostore.batch.member.dto.MemberIdResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.annotation.OnReadError;
 import org.springframework.batch.core.annotation.OnWriteError;
+import org.springframework.batch.item.Chunk;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 
 /**
@@ -19,7 +23,7 @@ public class ModifyInactiveMemberListener {
         log.info("==== modifyInactiveMemberStep | ItemReader error message log {}", e.getMessage());
     }
     @OnWriteError
-    public void onWriteError(Exception e){
+    public void onWriteError(Exception e, Chunk chunk){
         log.info("==== modifyInactiveMemberStep | ItemWrite error message log {}", e.getMessage());
     }
 }
